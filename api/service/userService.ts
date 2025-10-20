@@ -70,11 +70,11 @@ const createUser = async (req: Request, res: Response) => {
       cellphoneNumber,
     };
 
-    const createdUser = await database.insert(userTable).values(userData);
+    await database.insert(userTable).values(userData);
 
     res.status(200).send({
       message: "Created user success",
-      data: createdUser,
+      data: userData,
     });
   } catch (error) {
     console.error(error);
@@ -109,21 +109,21 @@ const updateUserbyId = async (req: Request, res: Response) => {
 
     const { name, age, email, cellphoneNumber }: UserType = req.body;
 
-    const updatedData: UserType = {
+    const updateUserData: UserType = {
       name: name ?? verifyUserExist[0]?.name,
       age: age ?? verifyUserExist[0]?.age,
       email: email ?? verifyUserExist[0]?.email,
       cellphoneNumber: cellphoneNumber ?? verifyUserExist[0]?.cellphoneNumber,
     };
 
-    const updatedUserData = await database
+    await database
       .update(userTable)
-      .set(updatedData)
+      .set(updateUserData)
       .where(eq(userTable.id, userId));
 
     res.status(200).send({
       message: "User updated",
-      data: updatedUserData,
+      data: updateUserData,
     });
   } catch (error) {
     console.error(error);

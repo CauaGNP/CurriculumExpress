@@ -15,4 +15,6 @@ server.use(express.json());
 server.get("/", (req, res) => {
   res.send("Bem vindo a api!!");
 });
+
 server.use("/user", router.user);
+server.use("/profileSummary", router.profileSummary);
