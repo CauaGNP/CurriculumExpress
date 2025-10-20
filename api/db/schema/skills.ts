@@ -1,5 +1,5 @@
 import { relations } from "drizzle-orm";
-import { pgEnum, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { userTable } from "./user";
 
 export const skillsEnum = pgEnum("Skill_level", [
@@ -9,14 +9,14 @@ export const skillsEnum = pgEnum("Skill_level", [
 ]);
 
 export const skillsTable = pgTable("Skills", {
-  id: varchar("skills_id").primaryKey(),
+  id: uuid("skills_id").primaryKey(),
   skill_name: varchar("skill_name").notNull(),
   level: skillsEnum("level").notNull(),
   created_at: timestamp("created_at").defaultNow().notNull(),
   updated_at: timestamp("updated_at")
     .defaultNow()
     .$onUpdateFn(() => new Date()),
-  user_id: varchar("user_id")
+  user_id: uuid("user_id")
     .notNull()
     .references(() => userTable.id),
 });

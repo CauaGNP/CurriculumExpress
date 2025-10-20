@@ -1,9 +1,9 @@
 import { relations } from "drizzle-orm";
-import { date, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { date, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { userTable } from "./user";
 
 export const experienceTable = pgTable("Expirence", {
-  id: varchar("expirence_id").primaryKey(),
+  id: uuid("expirence_id").primaryKey(),
   companyName: varchar("companyName").notNull(),
   description: varchar("description").notNull(),
   startDate: date().notNull(),
@@ -12,7 +12,7 @@ export const experienceTable = pgTable("Expirence", {
   updated_at: timestamp("updated_at")
     .defaultNow()
     .$onUpdateFn(() => new Date()),
-  user_id: varchar("user_id")
+  user_id: uuid("user_id")
     .notNull()
     .references(() => userTable.id),
 });

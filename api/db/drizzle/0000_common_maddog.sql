@@ -1,50 +1,51 @@
 CREATE TYPE "public"."Skill_level" AS ENUM('beginner', 'intermediate', 'advanced');--> statement-breakpoint
 CREATE TABLE "Address" (
-	"address-id" varchar PRIMARY KEY NOT NULL,
+	"address-id" uuid PRIMARY KEY NOT NULL,
 	"state" char(2) NOT NULL,
 	"city" varchar NOT NULL,
 	"created-at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now(),
-	"user_id" varchar NOT NULL
+	"user_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "Expirence" (
-	"expirence_id" varchar PRIMARY KEY NOT NULL,
+	"expirence_id" uuid PRIMARY KEY NOT NULL,
 	"companyName" varchar NOT NULL,
 	"description" varchar NOT NULL,
 	"startDate" date NOT NULL,
 	"endDate" date,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now(),
-	"user_id" varchar NOT NULL
+	"user_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "ProfileSummary" (
-	"profilesummary_id" varchar PRIMARY KEY NOT NULL,
+	"profilesummary_id" uuid PRIMARY KEY NOT NULL,
 	"softDescription" varchar NOT NULL,
 	"longDescription" varchar,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now(),
-	"user-id" varchar NOT NULL
+	"user-id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "Skills" (
-	"skills_id" varchar PRIMARY KEY NOT NULL,
+	"skills_id" uuid PRIMARY KEY NOT NULL,
 	"skill_name" varchar NOT NULL,
 	"level" "Skill_level" NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now(),
-	"user_id" varchar NOT NULL
+	"user_id" uuid NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "User" (
-	"user_id" varchar PRIMARY KEY NOT NULL,
+	"user_id" uuid PRIMARY KEY NOT NULL,
 	"name" varchar NOT NULL,
-	"birthDate" date NOT NULL,
+	"age" integer NOT NULL,
 	"email" varchar NOT NULL,
 	"cellphoneNumber" char(11) NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now()
+	"updated_at" timestamp DEFAULT now(),
+	CONSTRAINT "User_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint
 ALTER TABLE "Address" ADD CONSTRAINT "Address_user_id_User_user_id_fk" FOREIGN KEY ("user_id") REFERENCES "public"."User"("user_id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint

@@ -1,5 +1,5 @@
 {
-  "id": "113b207c-92b4-4dde-ae66-970458e7884d",
+  "id": "780453bc-896a-4bc1-8bb0-b370aa374a3e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,7 +10,7 @@
       "columns": {
         "address-id": {
           "name": "address-id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
@@ -42,7 +42,7 @@
         },
         "user_id": {
           "name": "user_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         }
@@ -75,7 +75,7 @@
       "columns": {
         "expirence_id": {
           "name": "expirence_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
@@ -119,7 +119,7 @@
         },
         "user_id": {
           "name": "user_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         }
@@ -152,7 +152,7 @@
       "columns": {
         "profilesummary_id": {
           "name": "profilesummary_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
@@ -184,7 +184,7 @@
         },
         "user-id": {
           "name": "user-id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         }
@@ -217,7 +217,7 @@
       "columns": {
         "skills_id": {
           "name": "skills_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
@@ -250,7 +250,7 @@
         },
         "user_id": {
           "name": "user_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         }
@@ -283,7 +283,7 @@
       "columns": {
         "user_id": {
           "name": "user_id",
-          "type": "varchar",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
@@ -293,9 +293,9 @@
           "primaryKey": false,
           "notNull": true
         },
-        "birthDate": {
-          "name": "birthDate",
-          "type": "date",
+        "age": {
+          "name": "age",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -329,7 +329,15 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "uniqueConstraints": {
+        "User_email_unique": {
+          "name": "User_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false

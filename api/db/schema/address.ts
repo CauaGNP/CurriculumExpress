@@ -1,16 +1,16 @@
 import { relations } from "drizzle-orm";
-import { char, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { char, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { userTable } from "./user";
 
 export const addressTable = pgTable("Address", {
-  id: varchar("address-id").primaryKey(),
+  id: uuid("address-id").primaryKey(),
   state: char("state", { length: 2 }).notNull(),
   city: varchar("city").notNull(),
   created_at: timestamp("created-at").defaultNow().notNull(),
   updated_at: timestamp("updated_at")
     .defaultNow()
     .$onUpdateFn(() => new Date()),
-  user_id: varchar("user_id")
+  user_id: uuid("user_id")
     .notNull()
     .references(() => userTable.id),
 });
