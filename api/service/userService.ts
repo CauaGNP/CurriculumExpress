@@ -1,6 +1,6 @@
-import { database } from "@/db/index.ts";
-import { userTable } from "@/db/schema/index.ts";
-import { type UserDTO } from "@/DTO/userDTO.ts";
+import { database } from "@/db/index.js";
+import { userTable } from "@/db/schema/index.js";
+import { type UserDTO } from "@/DTO/userDTO.js";
 import { eq } from "drizzle-orm";
 import { v4 as uuidV4 } from "uuid";
 

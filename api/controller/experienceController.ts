@@ -4,7 +4,7 @@ import {
   getAllExperiencesService,
   getExperienceByIdService,
   updateExperienceByIdService,
-} from "@/service/experinceService.ts";
+} from "@/service/experinceService.js";
 import type { Request, Response } from "express";
 
 const getAllExpirences = async (req: Request, res: Response) => {

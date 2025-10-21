@@ -4,7 +4,7 @@ import {
   getAllUsersService,
   getUserByIdService,
   updateUserbyIdService,
-} from "@/service/userService.ts";
+} from "@/service/userService.js";
 import type { Request, Response } from "express";
 
 const getAllUsers = async (req: Request, res: Response) => {

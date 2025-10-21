@@ -4,7 +4,7 @@ import {
   getAllSkills,
   getSkillById,
   updateSkillById,
-} from "@/controller/skillsController.ts";
+} from "@/controller/skillsController.js";
 import { Router } from "express";
 
 const router = Router();

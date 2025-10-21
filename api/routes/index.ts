@@ -1,7 +1,7 @@
-import address from "./addressRouter.ts";
-import experience from "./experienceRouter.ts";
-import profileSummary from "./profileSummaryRouter.ts";
-import skills from "./skillsRouter.ts";
-import user from "./userRouter.ts";
+import address from "./addressRouter.js";
+import experience from "./experienceRouter.js";
+import profileSummary from "./profileSummaryRouter.js";
+import skills from "./skillsRouter.js";
+import user from "./userRouter.js";
 
 export default { address, skills, user, profileSummary, experience };
