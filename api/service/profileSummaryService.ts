@@ -1,6 +1,6 @@
-import { database } from "@/db";
-import { profileSummary } from "@/db/schema";
-import type { ProfileSummaryDTO } from "@/DTO/profileSummaryDTO";
+import { database } from "@/db/index.ts";
+import { profileSummary } from "@/db/schema/index.ts";
+import type { ProfileSummaryDTO } from "@/DTO/profileSummaryDTO.ts";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 

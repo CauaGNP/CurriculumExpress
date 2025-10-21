@@ -1,6 +1,6 @@
-import { database } from "@/db"
-import { addressTable } from "@/db/schema"
-import type { AddressDTO } from "@/DTO/addressDTO"
+import { database } from "@/db/index.ts"
+import { addressTable } from "@/db/schema/index.ts"
+import type { AddressDTO } from "@/DTO/addressDTO.ts"
 import { eq } from "drizzle-orm"
 import { v4 as uuidV4 } from "uuid"
 

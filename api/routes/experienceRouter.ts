@@ -4,7 +4,7 @@ import {
   getAllExpirences,
   getExperienceById,
   updateExperienceById,
-} from "@/controller/experienceController";
+} from "@/controller/experienceController.ts";
 import { Router } from "express";
 
 const router = Router();

@@ -4,7 +4,7 @@ import {
   getAllProfileSummary,
   getProfileSummaryById,
   updateProfileSummary,
-} from "@/controller/profileSummaryController";
+} from "@/controller/profileSummaryController.ts";
 import { Router } from "express";
 
 const router = Router();

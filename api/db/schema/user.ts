@@ -7,10 +7,10 @@ import {
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
-import { addressTable } from "./address";
-import { experienceTable } from "./experience";
-import { profileSummary } from "./profileSummary";
-import { skillsTable } from "./skills";
+import { addressTable } from "./address.ts";
+import { experienceTable } from "./experience.ts";
+import { profileSummary } from "./profileSummary.ts";
+import { skillsTable } from "./skills.ts";
 
 export const userTable = pgTable("User", {
   id: uuid("user_id").primaryKey(),

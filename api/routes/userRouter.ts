@@ -4,7 +4,7 @@ import {
   getAllUsers,
   getUserById,
   updateUserById,
-} from "@/controller/userController";
+} from "@/controller/userController.ts";
 import { Router } from "express";
 
 const router = Router();

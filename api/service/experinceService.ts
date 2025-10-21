@@ -1,6 +1,6 @@
-import { database } from "@/db";
-import { experienceTable } from "@/db/schema";
-import { type ExperienceDTO } from "@/DTO/experienceDTO";
+import { database } from "@/db/index.ts";
+import { experienceTable } from "@/db/schema/index.ts";
+import { type ExperienceDTO } from "@/DTO/experienceDTO.ts";
 import { eq } from "drizzle-orm";
 import { v4 as uuidV4 } from "uuid";
 

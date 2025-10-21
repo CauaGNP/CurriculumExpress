@@ -1,4 +1,4 @@
-import { createAddress, deleteAddressById, getAddressById, getAllAddress, updateAddressById } from "@/controller/addressController";
+import { createAddress, deleteAddressById, getAddressById, getAllAddress, updateAddressById } from "@/controller/addressController.ts";
 import { Router } from "express";
 
 const router = Router();

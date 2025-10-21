@@ -4,7 +4,7 @@ import {
   getAllProfileSummaryService,
   getProfileSummaryByIdService,
   updateProfileSummaryService,
-} from "@/service/profileSummaryService";
+} from "@/service/profileSummaryService.ts";
 import type { Request, Response } from "express";
 
 const getAllProfileSummary = async (req: Request, res: Response) => {

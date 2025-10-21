@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-import router from "./routes";
+import router from "./routes/index.ts";
 
 import env from "./env";
 
