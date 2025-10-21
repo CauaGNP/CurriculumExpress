@@ -1,4 +1,4 @@
-import { skillsLevel } from "@/db/schema/index.js";
+import { skillsLevel } from "../db/schema/index.js";
 import { z } from "zod";
 
 export const skillsDTO = z.object({

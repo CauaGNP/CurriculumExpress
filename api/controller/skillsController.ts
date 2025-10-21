@@ -4,7 +4,7 @@ import {
   getAllSkillsService,
   getSkillByIdService,
   updateSkillByIdService,
-} from "@/service/skilssService.js";
+} from "../service/skilssService.js";
 import type { Request, Response } from "express";
 
 const getAllSkills = async (req: Request, res: Response) => {

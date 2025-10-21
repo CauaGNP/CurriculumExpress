@@ -1,4 +1,4 @@
-import { createAddressSevice, deleteAdddressByIdService, getAddressbyIdService, getAllAddressService, updateAddressByIdService } from "@/service/addressService.js";
+import { createAddressSevice, deleteAdddressByIdService, getAddressbyIdService, getAllAddressService, updateAddressByIdService } from "../service/addressService.js";
 import type { Request, Response } from "express";
 
 const getAllAddress = async (req: Request, res: Response) => {
