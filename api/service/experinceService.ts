@@ -1,6 +1,6 @@
 import { database } from "@/db";
 import { experienceTable } from "@/db/schema";
-import { type ExperienceType } from "@/types/experienceType";
+import { type ExperienceDTO } from "@/DTO/experienceDTO";
 import { eq } from "drizzle-orm";
 import { v4 as uuidV4 } from "uuid";
 
@@ -14,7 +14,7 @@ const getExperienceByIdService = async (experienceId: string) => {
   });
 };
 
-const createExperienceService = async (data: ExperienceType) => {
+const createExperienceService = async (data: ExperienceDTO) => {
   const experienceData = {
     id: uuidV4(),
     companyName: data.companyName,
@@ -29,7 +29,7 @@ const createExperienceService = async (data: ExperienceType) => {
 
 const updateExperienceByIdService = async (
   experienceId: string,
-  data: Partial<ExperienceType>
+  data: Partial<ExperienceDTO>
 ) => {
   await database
     .update(experienceTable)

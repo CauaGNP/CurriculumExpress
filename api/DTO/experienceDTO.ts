@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const experienceType = z.object({
+export const experienceDTO = z.object({
   companyName: z.string().nonempty(),
   description: z.string().nonempty(),
   startDate: z.date(),
@@ -8,4 +8,4 @@ export const experienceType = z.object({
   user_id: z.string().uuid(),
 });
 
-export type ExperienceType = z.infer<typeof experienceType>;
+export type ExperienceDTO = z.infer<typeof experienceDTO>;

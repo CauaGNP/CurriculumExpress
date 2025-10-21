@@ -1,6 +1,6 @@
 import { database } from "@/db"
 import { addressTable } from "@/db/schema"
-import type { AddressType } from "@/types/addressType"
+import type { AddressDTO } from "@/DTO/addressDTO"
 import { eq } from "drizzle-orm"
 import { v4 as uuidV4 } from "uuid"
 
@@ -14,7 +14,7 @@ const getAddressbyIdService = async (addressId: string) => {
     })
 }
 
-const createAddressSevice = async (data : AddressType) =>{
+const createAddressSevice = async (data : AddressDTO) =>{
     const addressData = {
         id: uuidV4(),
         state: data.state,
@@ -25,7 +25,7 @@ const createAddressSevice = async (data : AddressType) =>{
     return await database.insert(addressTable).values(addressData)
 }
 
-const updateAddressByIdService = async (addressId: string, data: Partial<AddressType>) => {
+const updateAddressByIdService = async (addressId: string, data: Partial<AddressDTO>) => {
     await database.update(addressTable).set(data).where(eq(addressTable.id, addressId));
     return
 }

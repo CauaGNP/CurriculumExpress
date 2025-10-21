@@ -1,9 +1,9 @@
 import { z } from "zod";
 
-export const profileSummaryType = z.object({
+export const profileSummaryDTO = z.object({
   softDescription: z.string().nonempty(),
   longDescription: z.string(),
   user_id: z.string().uuid(),
 });
 
-export type ProfileSummaryType = z.infer<typeof profileSummaryType>;
+export type ProfileSummaryDTO = z.infer<typeof profileSummaryDTO>;

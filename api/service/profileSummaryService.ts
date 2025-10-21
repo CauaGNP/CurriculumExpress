@@ -1,6 +1,6 @@
 import { database } from "@/db";
 import { profileSummary } from "@/db/schema";
-import type { ProfileSummaryType } from "@/types/profileSummaryType";
+import type { ProfileSummaryDTO } from "@/DTO/profileSummaryDTO";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 
@@ -14,7 +14,7 @@ const getProfileSummaryByIdService = async (profileSummaryId: string) => {
   });
 };
 
-const createProfileSummaryService = async (data: ProfileSummaryType) => {
+const createProfileSummaryService = async (data: ProfileSummaryDTO) => {
   const profileSummaryData = {
     id: uuidv4(),
     softDescription: data.softDescription,
@@ -27,7 +27,7 @@ const createProfileSummaryService = async (data: ProfileSummaryType) => {
 
 const updateProfileSummaryService = async (
   profileSummaryId: string,
-  data: Partial<ProfileSummaryType>
+  data: Partial<ProfileSummaryDTO>
 ) => {
   await database
     .update(profileSummary)

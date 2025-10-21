@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const userType = z.object({
+export const userDTO = z.object({
   name: z.string().nonempty("Name cannot be empty"),
   age: z.number().refine((val) => Number.isNaN(val), "Age cannot empty"),
   email: z.string().email("Invalid email").nonempty("Email cannot be empty"),
@@ -10,4 +10,4 @@ export const userType = z.object({
     .nonempty("Cellphone number cannot be empty"),
 });
 
-export type UserType = z.infer<typeof userType>;
+export type UserDTO = z.infer<typeof userDTO>;

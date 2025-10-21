@@ -1,6 +1,6 @@
 import { database } from "@/db";
 import { skillsTable } from "@/db/schema";
-import { type SkillsType } from "@/types/skillsType";
+import { type SkillsDTO } from "@/DTO/skillsDTO";
 import { eq } from "drizzle-orm";
 import { v4 as uuidV4 } from "uuid";
 
@@ -14,7 +14,7 @@ const getSkillByIdService = async (skillId: string) => {
   });
 };
 
-const createSkillService = async (data: SkillsType) => {
+const createSkillService = async (data: SkillsDTO) => {
   const newSkill = {
     id: uuidV4(),
     skill_name: data.skill_name,
@@ -29,7 +29,7 @@ const createSkillService = async (data: SkillsType) => {
 
 const updateSkillByIdService = async (
   skillId: string,
-  data: Partial<SkillsType>
+  data: Partial<SkillsDTO>
 ) => {
   await database
     .update(skillsTable)

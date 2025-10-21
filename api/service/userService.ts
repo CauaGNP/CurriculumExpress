@@ -1,6 +1,6 @@
 import { database } from "@/db";
 import { userTable } from "@/db/schema";
-import { type UserType } from "@/types/userType";
+import { type UserDTO } from "@/DTO/userDTO";
 import { eq } from "drizzle-orm";
 import { v4 as uuidV4 } from "uuid";
 
@@ -14,7 +14,7 @@ const getUserByIdService = async (userId: string) => {
   });
 };
 
-const createUserService = async (data: UserType) => {
+const createUserService = async (data: UserDTO) => {
   const userData = {
     id: uuidV4(),
     name: data.name,
@@ -30,7 +30,7 @@ const createUserService = async (data: UserType) => {
 
 const updateUserbyIdService = async (
   userId: string,
-  data: Partial<UserType>
+  data: Partial<UserDTO>
 ) => {
   await database.update(userTable).set(data).where(eq(userTable.id, userId));
 
