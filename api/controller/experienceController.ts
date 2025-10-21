@@ -30,7 +30,7 @@ const getExperienceById = async (req: Request, res: Response) => {
 
     if (!expirenceId) {
       return res.status(400).send({
-        message: "Please provide skillId",
+        message: "Please provide expirenceId",
       });
     }
 

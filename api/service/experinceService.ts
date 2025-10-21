@@ -24,8 +24,7 @@ const createExperienceService = async (data: ExperienceType) => {
     user_id: data.user_id,
   };
 
-  await database.insert(experienceTable).values(experienceData);
-  return;
+  return await database.insert(experienceTable).values(experienceData);
 };
 
 const updateExperienceByIdService = async (

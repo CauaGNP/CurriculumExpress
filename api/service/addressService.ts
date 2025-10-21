@@ -1,0 +1,43 @@
+import { database } from "@/db"
+import { addressTable } from "@/db/schema"
+import type { AddressType } from "@/types/addressType"
+import { eq } from "drizzle-orm"
+import { v4 as uuidV4 } from "uuid"
+
+const getAllAddressService = async () => {
+    return await database.query.addressTable.findMany()
+}
+
+const getAddressbyIdService = async (addressId: string) => {
+    return await database.query.addressTable.findFirst({
+        where : eq(addressTable.id, addressId)
+    })
+}
+
+const createAddressSevice = async (data : AddressType) =>{
+    const addressData = {
+        id: uuidV4(),
+        state: data.state,
+        city: data.city,
+        user_id: data.user_id
+    }
+
+    return await database.insert(addressTable).values(addressData)
+}
+
+const updateAddressByIdService = async (addressId: string, data: Partial<AddressType>) => {
+    await database.update(addressTable).set(data).where(eq(addressTable.id, addressId));
+    return
+}
+
+const deleteAdddressByIdService = async (addressId: string) => {
+    return await database.delete(addressTable).where(eq(addressTable.id, addressId));    
+}
+
+export {
+    createAddressSevice,
+    getAllAddressService,
+    getAddressbyIdService,
+    updateAddressByIdService,
+    deleteAdddressByIdService
+} 

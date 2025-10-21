@@ -21,3 +21,4 @@ server.use("/skill", router.skills);
 server.use("/user", router.user);
 server.use("/profile-summary", router.profileSummary);
 server.use("/experience", router.experience);
+server.use("/address", router.address);
