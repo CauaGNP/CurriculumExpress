@@ -6,8 +6,8 @@ export const experienceTable = pgTable("Expirence", {
   id: uuid("expirence_id").primaryKey(),
   companyName: varchar("companyName").notNull(),
   description: varchar("description").notNull(),
-  startDate: date().notNull(),
-  endDate: date(),
+  startDate: date({ mode: "date" }).notNull(),
+  endDate: date({ mode: "date" }),
   created_at: timestamp("created_at").defaultNow().notNull(),
   updated_at: timestamp("updated_at")
     .defaultNow()
