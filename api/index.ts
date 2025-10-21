@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
-import router from "./controller";
+import router from "./routes";
+
 import env from "./env";
 
 const server = express();
@@ -16,5 +17,6 @@ server.get("/", (req, res) => {
   res.send("Bem vindo a api!!");
 });
 
+server.use("/skill", router.skills);
 server.use("/user", router.user);
-server.use("/profileSummary", router.profileSummary);
+server.use("/profile-summary", router.profileSummary);

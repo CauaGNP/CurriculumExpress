@@ -2,11 +2,9 @@ import { relations } from "drizzle-orm";
 import { pgEnum, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { userTable } from "./user";
 
-export const skillsEnum = pgEnum("Skill_level", [
-  "beginner",
-  "intermediate",
-  "advanced",
-]);
+export const skillsLevel = ["beginner", "intermediate", "advanced"] as const;
+export const skillsEnum = pgEnum("Skill_level", skillsLevel);
+export type SkillLevelType = (typeof skillsLevel)[number];
 
 export const skillsTable = pgTable("Skills", {
   id: uuid("skills_id").primaryKey(),

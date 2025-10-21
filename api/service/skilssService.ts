@@ -1,0 +1,52 @@
+import { database } from "@/db";
+import { skillsTable } from "@/db/schema";
+import { type SkillsType } from "@/types/skillsType";
+import { eq } from "drizzle-orm";
+import { v4 as uuidV4 } from "uuid";
+
+const getAllSkillsService = async () => {
+  return await database.query.skillsTable.findMany();
+};
+
+const getSkillByIdService = async (skillId: string) => {
+  return await database.query.skillsTable.findFirst({
+    where: eq(skillsTable.id, skillId),
+  });
+};
+
+const createSkillService = async (data: SkillsType) => {
+  const newSkill = {
+    id: uuidV4(),
+    skill_name: data.skill_name,
+    level: data.level,
+    user_id: data.user_id,
+  };
+
+  await database.insert(skillsTable).values(newSkill);
+
+  return newSkill;
+};
+
+const updateSkillByIdService = async (
+  skillId: string,
+  data: Partial<SkillsType>
+) => {
+  await database
+    .update(skillsTable)
+    .set(data)
+    .where(eq(skillsTable.id, skillId));
+
+  return;
+};
+
+const deleteSkillByIdService = async (skillId: string) => {
+  return await database.delete(skillsTable).where(eq(skillsTable.id, skillId));
+};
+
+export {
+  createSkillService,
+  deleteSkillByIdService,
+  getAllSkillsService,
+  getSkillByIdService,
+  updateSkillByIdService,
+};
