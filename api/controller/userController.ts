@@ -1,7 +1,12 @@
 import {
   createUserService,
   deleteUserByIdService,
+  getAddressByUserIdService,
+  getAllDatasbyUserIdService,
+  getAllExperienceByUserIdService,
+  getAllSkillsByUserIdService,
   getAllUsersService,
+  getProfileSummaryByUserIdService,
   getUserByIdService,
   updateUserbyIdService,
 } from "../service/userService.js";
@@ -117,5 +122,104 @@ const deleteUserById = async (req: Request, res: Response) => {
     });
   }
 };
+const getAddressByUserId = async  (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
 
-export { createUser, deleteUserById, getAllUsers, getUserById, updateUserById };
+    if (!userId) {
+      return res.status(400).send({
+        message: "Please provide userId",
+      });
+    }
+
+    await getAddressByUserIdService(userId);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Server error",
+    });
+  }
+}
+
+const getAllSkillsByUserId = async  (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).send({
+        message: "Please provide userId",
+      });
+    }
+
+    await getAllSkillsByUserIdService(userId);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Server error",
+    });
+  }
+}
+
+const getProfileSummaryByUserId = async  (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).send({
+        message: "Please provide userId",
+      });
+    }
+
+    await getProfileSummaryByUserIdService(userId);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Server error",
+    });
+  }
+}
+
+const getAllExperienceByUserId = async  (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).send({
+        message: "Please provide userId",
+      });
+    }
+
+    await getAllExperienceByUserIdService(userId);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Server error",
+    });
+  }
+}
+
+const getAllDatasbyUserId = async (req: Request, res: Response) => {
+  try {
+    const { userId } = req.params;
+
+    if (!userId) {
+      return res.status(400).send({
+        message: "Please provide userId",
+      });
+    }
+
+    await getAllDatasbyUserIdService(userId);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).send({
+      message: "Server error",
+    });
+  }
+}
+
+export { createUser, deleteUserById, getAllUsers, getUserById, updateUserById, getAddressByUserId, getAllDatasbyUserId, getAllExperienceByUserId, getAllSkillsByUserId, getProfileSummaryByUserId };
