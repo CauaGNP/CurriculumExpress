@@ -1,3 +1,4 @@
+import type { Request, Response } from "express";
 import {
   createUserService,
   deleteUserByIdService,
@@ -10,7 +11,6 @@ import {
   getUserByIdService,
   updateUserbyIdService,
 } from "../service/userService.js";
-import type { Request, Response } from "express";
 
 const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -122,7 +122,7 @@ const deleteUserById = async (req: Request, res: Response) => {
     });
   }
 };
-const getAddressByUserId = async  (req: Request, res: Response) => {
+const getAddressByUserId = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
 
@@ -132,7 +132,12 @@ const getAddressByUserId = async  (req: Request, res: Response) => {
       });
     }
 
-    await getAddressByUserIdService(userId);
+    const addressByUserData = await getAddressByUserIdService(userId);
+
+    res.status(200).send({
+      message: "Request sucessfully",
+      data: addressByUserData,
+    });
   } catch (error) {
     console.error(error);
 
@@ -140,9 +145,9 @@ const getAddressByUserId = async  (req: Request, res: Response) => {
       message: "Server error",
     });
   }
-}
+};
 
-const getAllSkillsByUserId = async  (req: Request, res: Response) => {
+const getAllSkillsByUserId = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
 
@@ -152,7 +157,12 @@ const getAllSkillsByUserId = async  (req: Request, res: Response) => {
       });
     }
 
-    await getAllSkillsByUserIdService(userId);
+    const skillsByUserData = await getAllSkillsByUserIdService(userId);
+
+    res.status(200).send({
+      message: "Request sucessfully",
+      data: skillsByUserData,
+    });
   } catch (error) {
     console.error(error);
 
@@ -160,9 +170,9 @@ const getAllSkillsByUserId = async  (req: Request, res: Response) => {
       message: "Server error",
     });
   }
-}
+};
 
-const getProfileSummaryByUserId = async  (req: Request, res: Response) => {
+const getProfileSummaryByUserId = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
 
@@ -172,7 +182,14 @@ const getProfileSummaryByUserId = async  (req: Request, res: Response) => {
       });
     }
 
-    await getProfileSummaryByUserIdService(userId);
+    const profileSummaryUserData = await getProfileSummaryByUserIdService(
+      userId
+    );
+
+    res.status(200).send({
+      message: "Request sucessfully",
+      data: profileSummaryUserData,
+    });
   } catch (error) {
     console.error(error);
 
@@ -180,9 +197,9 @@ const getProfileSummaryByUserId = async  (req: Request, res: Response) => {
       message: "Server error",
     });
   }
-}
+};
 
-const getAllExperienceByUserId = async  (req: Request, res: Response) => {
+const getAllExperienceByUserId = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params;
 
@@ -192,7 +209,12 @@ const getAllExperienceByUserId = async  (req: Request, res: Response) => {
       });
     }
 
-    await getAllExperienceByUserIdService(userId);
+    const experienceUserData = await getAllExperienceByUserIdService(userId);
+
+    res.status(200).send({
+      message: "Request sucessfully",
+      data: experienceUserData,
+    });
   } catch (error) {
     console.error(error);
 
@@ -200,7 +222,7 @@ const getAllExperienceByUserId = async  (req: Request, res: Response) => {
       message: "Server error",
     });
   }
-}
+};
 
 const getAllDatasbyUserId = async (req: Request, res: Response) => {
   try {
@@ -212,7 +234,12 @@ const getAllDatasbyUserId = async (req: Request, res: Response) => {
       });
     }
 
-    await getAllDatasbyUserIdService(userId);
+    const allUserData = await getAllDatasbyUserIdService(userId);
+
+    res.status(200).send({
+      message: "Request sucessfully",
+      data: allUserData,
+    });
   } catch (error) {
     console.error(error);
 
@@ -220,6 +247,17 @@ const getAllDatasbyUserId = async (req: Request, res: Response) => {
       message: "Server error",
     });
   }
-}
+};
 
-export { createUser, deleteUserById, getAllUsers, getUserById, updateUserById, getAddressByUserId, getAllDatasbyUserId, getAllExperienceByUserId, getAllSkillsByUserId, getProfileSummaryByUserId };
+export {
+  createUser,
+  deleteUserById,
+  getAddressByUserId,
+  getAllDatasbyUserId,
+  getAllExperienceByUserId,
+  getAllSkillsByUserId,
+  getAllUsers,
+  getProfileSummaryByUserId,
+  getUserById,
+  updateUserById,
+};
