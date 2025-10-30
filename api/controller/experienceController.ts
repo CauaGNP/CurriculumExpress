@@ -1,5 +1,5 @@
-import { experienceDTO } from "@/DTO/experienceDTO.js";
 import type { Request, Response } from "express";
+import { experienceDTO } from "../DTO/experienceDTO.js";
 import {
   createExperienceService,
   deleteExperienceByIdService,
