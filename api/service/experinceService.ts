@@ -1,8 +1,8 @@
+import { eq } from "drizzle-orm";
+import { v4 as uuidV4 } from "uuid";
 import { database } from "../db/index.js";
 import { experienceTable } from "../db/schema/index.js";
 import { type ExperienceDTO } from "../DTO/experienceDTO.js";
-import { eq } from "drizzle-orm";
-import { v4 as uuidV4 } from "uuid";
 
 const getAllExperiencesService = async () => {
   return await database.query.experienceTable.findMany();
@@ -24,7 +24,10 @@ const createExperienceService = async (data: ExperienceDTO) => {
     user_id: data.user_id,
   };
 
-  return await database.insert(experienceTable).values(experienceData);
+  return await database
+    .insert(experienceTable)
+    .values(experienceData)
+    .returning();
 };
 
 const updateExperienceByIdService = async (
