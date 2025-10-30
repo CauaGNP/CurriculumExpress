@@ -1,3 +1,5 @@
+import { experienceDTO } from "@/DTO/experienceDTO.js";
+import type { Request, Response } from "express";
 import {
   createExperienceService,
   deleteExperienceByIdService,
@@ -5,7 +7,6 @@ import {
   getExperienceByIdService,
   updateExperienceByIdService,
 } from "../service/experinceService.js";
-import type { Request, Response } from "express";
 
 const getAllExpirences = async (req: Request, res: Response) => {
   try {
@@ -57,7 +58,8 @@ const getExperienceById = async (req: Request, res: Response) => {
 
 const createExperience = async (req: Request, res: Response) => {
   try {
-    const experienceData = await createExperienceService(req.body);
+    const parsedData = experienceDTO.parse(req.body);
+    const experienceData = await createExperienceService(parsedData);
 
     res.status(201).send({
       message: "Experience created",
@@ -81,8 +83,9 @@ const updateExperienceById = async (req: Request, res: Response) => {
         message: "Please provide skillId",
       });
     }
+    const parsedData = experienceDTO.partial().parse(req.body);
 
-    await updateExperienceByIdService(expirenceId, req.body);
+    await updateExperienceByIdService(expirenceId, parsedData);
 
     res.status(204).send();
   } catch (error) {
