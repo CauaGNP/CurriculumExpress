@@ -1,6 +1,6 @@
 import { relations } from "drizzle-orm";
 import { pgEnum, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { userTable } from "./user.js";
+import { userTable } from "./user.ts";
 
 export const skillsLevel = ["beginner", "intermediate", "advanced"] as const;
 export const skillsEnum = pgEnum("Skill_level", skillsLevel);

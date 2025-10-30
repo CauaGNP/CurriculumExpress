@@ -1,6 +1,6 @@
 import { relations } from "drizzle-orm";
 import { pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { userTable } from "./user.js";
+import { userTable } from "./user.ts";
 
 export const profileSummary = pgTable("ProfileSummary", {
   id: uuid("profilesummary_id").primaryKey(),

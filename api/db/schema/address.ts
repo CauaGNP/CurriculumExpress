@@ -1,6 +1,6 @@
 import { relations } from "drizzle-orm";
 import { char, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { userTable } from "./user.js";
+import { userTable } from "./user.ts";
 
 export const addressTable = pgTable("Address", {
   id: uuid("address-id").primaryKey(),
