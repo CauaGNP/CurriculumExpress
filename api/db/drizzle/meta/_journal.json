@@ -15,6 +15,20 @@
       "when": 1761789651796,
       "tag": "0001_kind_diamondback",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1761829276791,
+      "tag": "0002_chief_toxin",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1761829879535,
+      "tag": "0003_careless_goliath",
+      "breakpoints": true
     }
   ]
 }

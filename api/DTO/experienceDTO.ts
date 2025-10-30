@@ -3,8 +3,8 @@ import { z } from "zod";
 export const experienceDTO = z.object({
   companyName: z.string().nonempty(),
   description: z.string().nonempty(),
-  startDate: z.date(),
-  endDate: z.date().nullable(),
+  startDate: z.coerce.date(),
+  endDate: z.coerce.date().nullable(),
   user_id: z.string().uuid(),
 });
 

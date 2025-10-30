@@ -1,9 +1,9 @@
 import { relations } from "drizzle-orm";
 import { date, pgTable, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
-import { userTable } from "./user.js";
+import { userTable } from "./user";
 
 export const experienceTable = pgTable("Expirence", {
-  id: uuid("expirence_id").primaryKey(),
+  id: uuid("experience_id").primaryKey(),
   companyName: varchar("companyName").notNull(),
   description: varchar("description").notNull(),
   startDate: date({ mode: "date" }).notNull(),
