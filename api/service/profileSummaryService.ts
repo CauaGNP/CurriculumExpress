@@ -1,8 +1,8 @@
+import { eq } from "drizzle-orm";
+import { v4 as uuidv4 } from "uuid";
 import { database } from "../db/index.js";
 import { profileSummary } from "../db/schema/index.js";
 import type { ProfileSummaryDTO } from "../DTO/profileSummaryDTO.js";
-import { eq } from "drizzle-orm";
-import { v4 as uuidv4 } from "uuid";
 
 const getAllProfileSummaryService = async () => {
   return await database.query.profileSummary.findMany();
@@ -22,7 +22,10 @@ const createProfileSummaryService = async (data: ProfileSummaryDTO) => {
     user_id: data.user_id,
   };
 
-  return await database.insert(profileSummary).values(profileSummaryData);
+  return await database
+    .insert(profileSummary)
+    .values(profileSummaryData)
+    .returning();
 };
 
 const updateProfileSummaryService = async (
