@@ -1,3 +1,4 @@
+import { Router } from "express";
 import {
   createProfileSummary,
   deleteProfileSummary,
@@ -5,7 +6,6 @@ import {
   getProfileSummaryById,
   updateProfileSummary,
 } from "../controller/profileSummaryController.js";
-import { Router } from "express";
 
 const router = Router();
 
@@ -13,6 +13,6 @@ router.get("/", getAllProfileSummary);
 router.get("/:profileSummaryId", getProfileSummaryById);
 router.post("/", createProfileSummary);
 router.put("/:profileSummaryId", updateProfileSummary);
-router.get("/:profileSummaryId", deleteProfileSummary);
+router.delete("/:profileSummaryId", deleteProfileSummary);
 
 export default router;
