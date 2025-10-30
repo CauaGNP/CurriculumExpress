@@ -12,7 +12,7 @@ export const addressTable = pgTable("Address", {
     .$onUpdateFn(() => new Date()),
   user_id: uuid("user_id")
     .notNull()
-    .references(() => userTable.id)
+    .references(() => userTable.id, { onDelete: "cascade" })
     .unique(),
 });
 

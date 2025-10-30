@@ -118,7 +118,8 @@ const deleteUserById = async (req: Request, res: Response) => {
     console.error(error);
 
     res.status(500).send({
-      message: "Server error",
+      message:
+        "Error: user has no related data. Check the relationships in the database.",
     });
   }
 };
