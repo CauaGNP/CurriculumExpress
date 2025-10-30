@@ -12,7 +12,8 @@ export const profileSummary = pgTable("ProfileSummary", {
     .$onUpdateFn(() => new Date()),
   user_id: uuid("user-id")
     .notNull()
-    .references(() => userTable.id),
+    .references(() => userTable.id)
+    .unique(),
 });
 
 export const profileSummaryRelation = relations(profileSummary, ({ one }) => ({
